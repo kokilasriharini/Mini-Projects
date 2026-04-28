@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>Expenses Calculator</title>
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#000,#111,#001a33);
+    font-family: Arial, sans-serif;
+    color:white;
+}
+
+.card{
+    width:380px;
+    padding:30px;
+    border-radius:18px;
+    background:#111;
+    box-shadow:0 0 20px rgba(0,0,255,0.25);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:10px;
+    background:#1e1e1e;
+    color:white;
+    font-size:15px;
+    box-sizing:border-box;
+}
+input:focus{
+    outline:none;
+    box-shadow:0 0 0 2px blue;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+   -webkit-appearance:none;
+   margin:0;
+}
+input[type="number"]{
+   appearance:textfield;
+}
+button{
+    width:100%;
+    padding:12px;
+    margin-top:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg,#0055ff,#00aaff);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(0,85,255,0.35);
+}
+
+.result{
+    background:#1b1b1b;
+    margin-top:18px;
+    padding:12px;
+    border-left:4px solid blue;
+    border-radius:10px;
+    margin-top:10px;
+}
+</style>
+</head>
+<body>
+<div>
+    <div class="card">
+        <h1>Expenses Calculator</h1>
+        <input type="number" inputmode="numeric" placeholder="monthlySalary" id="salary">
+        <input type="number" inputmode="numeric" placeholder="rent" id="rent">
+        <input type="number" inputmode="numeric" placeholder="groceries" id="groceries">
+        <input type="number" inputmode="numeric"placeholder="transport" id="transport">
+        <button onclick="Expenses()">Calculate</button> 
+    </div>
+    <div class="result" style="display:none;">
+        <div id="monthlysalary" class="cards"></div>
+        <div id="expenses" class="cards"></div>
+        <div  id="savings" class="cards"></div>
+        <div  id="remaining" class="cards"></div>
+    </div>
+</div>
+<Script>
+function Expenses(){
+
+let monthlySalary = Number(document.getElementById('salary').value);
+let rent = Number(document.getElementById('rent').value);
+let groceries = Number(document.getElementById('groceries').value);
+let transport = Number(document.getElementById('transport').value);
+if (
+  document.getElementById('salary').value === "" ||
+  document.getElementById('rent').value === "" ||
+  document.getElementById('groceries').value === "" ||
+  document.getElementById('transport').value === ""
+) {
+  alert("Fill all the above fields!");
+  return;
+}
+let savingsGoal = monthlySalary * 0.10;
+let totalExpenses = rent + groceries + transport;
+let remainingMoney = monthlySalary - totalExpenses - savingsGoal;
+
+document.querySelector(".result").style.display = "block";
+
+document.getElementById("monthlysalary").innerHTML =
+`<h4>Monthly Salary: ₹${monthlySalary}</h4>`;
+
+document.getElementById("expenses").innerHTML =
+`<h4>Total Expenses: ₹${totalExpenses}</h4>`;
+
+document.getElementById("savings").innerHTML =
+`<h4>Savings (10%): ₹${savingsGoal}</h4>`;
+
+document.getElementById("remaining").innerHTML =
+`<h4>Remaining: ₹${remainingMoney}</h4>`;
+
+if(remainingMoney < 0){
+   document.getElementById("remaining").style.color = "red";
+}
+else{
+   document.getElementById("remaining").style.color = "lightgreen";
+}
+
+}
+</Script>
+</body>
+</html>

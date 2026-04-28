@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0f1117;
+      color: #e8e8e8;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      border-left: 3px solid #4ade80;
+      padding-left: 1rem;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 4px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .section {
+      background: #1a1d27;
+      border: 1px solid #2a2d3a;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ade80;
+      margin-bottom: 1rem;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #2a2d3a;
+    }
+
+    .result-row:last-child {
+      border-bottom: none;
+    }
+
+    .result-key {
+      font-size: 13px;
+      color: #9ca3af;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .result-val {
+      font-size: 14px;
+      font-weight: 500;
+      color: #f0f0f0;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .result-val.big {
+      font-size: 28px;
+      color: #ffffff;
+    }
+
+    .result-val.green { color: #4ade80; }
+    .result-val.yellow { color: #fbbf24; }
+
+    .big-temp {
+      font-size: 56px;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .big-temp span {
+      font-size: 22px;
+      color: #6b7280;
+    }
+
+    .bmi-bar-wrap {
+      background: #2a2d3a;
+      border-radius: 4px;
+      height: 6px;
+      margin: 12px 0 6px;
+      overflow: hidden;
+    }
+
+    .bmi-bar {
+      height: 100%;
+      border-radius: 4px;
+      background: #4ade80;
+    }
+
+    .bmi-scale {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #6b7280;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #2a2d3a;
+      margin: 12px 0;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .total-key {
+      font-size: 14px;
+      font-weight: 500;
+      color: #e8e8e8;
+    }
+
+    .total-val {
+      font-size: 22px;
+      font-weight: 600;
+      color: #4ade80;
+      font-family: 'DM Mono', monospace;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #374151;
+      margin-top: 2rem;
+      font-family: 'DM Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+
+  <!-- WEATHER -->
+  <div class="section">
+    <div class="section-label">Weather</div>
+    <div class="big-temp" id="temp-display"></div>
+        <p id="city-pin"></p>
+
+    <div style="margin-top:8px; font-size:13px; 
+    color:#6b7280;" id="weather-label"></div>
+  </div>
+
+  <!-- ROOM AREA -->
+  <div class="section">
+    <div class="section-label">Room Area Calculator</div>
+    <div class="result-row">
+      <span class="result-key">Length</span>
+      <span class="result-val" id="room-length"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Width</span>
+      <span class="result-val" id="room-width"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Area</span>
+      <span class="result-val green" id="room-area"></span>
+    </div>
+  </div>
+
+  <!-- TAX -->
+  <div class="section">
+    <div class="section-label">Tax Calculator</div>
+    <div class="result-row">
+      <span class="result-key">Amount</span>
+      <span class="result-val" id="tax-money"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Tax Rate</span>
+      <span class="result-val" id="tax-rate"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Tax Amount</span>
+      <span class="result-val yellow" id="tax-amount"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Total Payable</span>
+      <span class="result-val green" id="tax-total"></span>
+    </div>
+  </div>
+
+  <!-- GROCERY BILL -->
+  <div class="section">
+    <div class="section-label">Grocery Bill</div>
+    <div class="result-row">
+      <span class="result-key">Milk</span>
+      <span class="result-val" id="bill-milk"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Bread</span>
+      <span class="result-val" id="bill-bread"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Eggs</span>
+      <span class="result-val" id="bill-eggs"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Subtotal</span>
+      <span class="result-val" id="bill-cost"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">10% Discount</span>
+      <span class="result-val yellow" id="bill-discount"></span>
+    </div>
+    <hr class="divider">
+    <div class="total-row">
+      <span class="total-key">Total</span>
+      <span class="total-val" id="bill-total"></span>
+    </div>
+  </div>
+
+  <!-- BMI -->
+  <div class="section">
+    <div class="section-label">BMI Calculator</div>
+    <div class="result-row">
+      <span class="result-key">Weight</span>
+      <span class="result-val" id="bmi-weight"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-key">Height</span>
+      <span class="result-val" id="bmi-height"></span>
+    </div>
+    <div class="total-row" style="padding-top:14px;">
+      <span class="total-key">Your BMI</span>
+      <span class="total-val" id="bmi-val"></span>
+    </div>
+  </div>
+</div>
+<script>
+  /* ── WEATHER ── */
+  function weather() {
+    let yourCity = "Thoothukudi";
+    let pincode = 628001;
+    let temperature = 32.5;
+    document.getElementById('city-pin').textContent = yourCity + "  ·  " + pincode;
+    document.getElementById('temp-display').innerHTML = temperature + '<span> °C</span>';
+    document.getElementById('weather-label').textContent = "Today's temperature in " + yourCity;
+  }
+
+  /* ── ROOM AREA ── */
+  function area() {
+    let length = 10;
+    let width = 5;
+    let area = length * width;
+
+    document.getElementById('room-length').textContent = length + " ft";
+    document.getElementById('room-width').textContent = width + " ft";
+    document.getElementById('room-area').textContent = area + " sq ft";
+  }
+
+  /* ── TAX ── */
+  function tax() {
+    let money = 5000;
+    let taxRate = 0.18;
+    let TaxAmount = taxRate * money;
+    let Amount = money + TaxAmount;
+
+    document.getElementById('tax-money').textContent = "₹" + money;
+    document.getElementById('tax-rate').textContent = taxRate * 100 + "%";
+    document.getElementById('tax-amount').textContent = "₹" + TaxAmount;
+    document.getElementById('tax-total').textContent = "₹" + Amount;
+  }
+
+  /* ── GROCERY BILL ── */
+  function bill() {
+    let milk = 45;
+    let bread = 25;
+    let eggs = 60;
+    let cost = milk + bread + eggs;
+    let discount = 0.10 * cost;
+    let totalamount = cost - discount;
+
+    document.getElementById('bill-milk').textContent = "₹" + milk;
+    document.getElementById('bill-bread').textContent = "₹" + bread;
+    document.getElementById('bill-eggs').textContent = "₹" + eggs;
+    document.getElementById('bill-cost').textContent = "₹" + cost;
+    document.getElementById('bill-discount').textContent = "-₹" + discount;
+    document.getElementById('bill-total').textContent = "₹" + totalamount;
+  }
+
+  /* ── BMI ── */
+  function BMI() {
+    let weight = 55;
+    let height = 1.65;
+    let bmi = weight / (height * height);
+    let bmiRounded = Math.round(bmi * 10) / 10;
+    let barWidth = (bmiRounded / 40) * 100;
+
+    document.getElementById('bmi-weight').textContent = weight + " kg";
+    document.getElementById('bmi-height').textContent = height + " m";
+    document.getElementById('bmi-val').textContent = bmiRounded;
+    document.getElementById('bmi-bar').style.width = barWidth + "%";
+  }
+
+  /* ── RUN ALL ── */
+  weather();
+  area();
+  tax();
+  bill();
+  BMI();
+</script>
+</body>
+</html>
