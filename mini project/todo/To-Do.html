@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TO-DO APP</title>
+        <link rel="stylesheet" href="To-Do.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+    <div class="app">
+    <header class="header">
+      <h1>Task<span class="accent-dot">.</span><br>Manager</h1>
+    </header>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-n accent" id="sTotal">0</div>
+        <div class="stat-l">Total</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n purple" id="sDone">0</div>
+        <div class="stat-l">Done</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n red" id="sPending">0</div>
+        <div class="stat-l">Pending</div>
+      </div>
+    </div>
+  
+    <div class="cards" id="inputdiv">
+        <div class="tags" id="tags">
+             <button class="btn close" id="closebtn" onclick="closebtns()" style="display: none;">X Close</button>
+             <input type="text" class="task-input" id="inputbox" style="display: none;" placeholder="title">
+             <input type="date" id="dueDate"class="task-input" style="display: none;" placeholder="De Date">       
+             <textarea
+            id="description"
+            class="task-input"
+            style="display:none;" placeholder="Task Description">
+        </textarea>
+            <button class="savebtn" id="savebtn" onclick="AddTask()" style="display: none;">save</button>
+        </div>
+        <div class="addbutton">
+            <button class="addbtn" id="addbtn" onclick="showTasks()" style="display: block;">+  Add Tasks</button>
+        </div>
+    </div>
+
+        <div class="filters-row">
+            <button class="f-btn active" onclick="displayTask('all')">All</button>
+            <button class="f-btn" onclick="displayTask('completed')">Completed</button>
+            <button class="f-btn" onclick="displayTask('pending')">Pending</button>
+            <button class="clear-btn" onclick="clearAllTasks()" id="clearall">Clear All</button>
+        </div>
+
+        <ul id="taskList"></ul>
+            <div id="taskDetails"></div>
+        </div>
+        <div class="toast" id="toast">
+        <div id="undoBox"></div>
+        </div>
+         <script src="To-Do.js"></script>
+    </body>
+</html> 
