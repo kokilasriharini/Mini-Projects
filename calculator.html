@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<style>
+*,*::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bg:        #0D0D0F;
+  --surface:   #16161A;
+  --surface2:  #1E1E24;
+  --border:    #2A2A35;
+  --accent:    #C8F135;
+  --accent2:   #ab99fa;
+  --text:      #F0F0F5;
+  --muted:     #33333a;
+  --del:       #FF4D6D;
+}
+body {
+  font-family: 'Syne', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.Calculator{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    width:350px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    transition:0.3s;
+}
+.Calculator:hover{
+    transform:translateY(-2px);
+}
+.numbtn{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    padding: 10px;
+    width:100%;
+    gap: 5px;
+}
+.numbtn button{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border: none;
+    transition:0.2s;
+    cursor:pointer;
+    background: var(--muted);
+    color:var(--accent);
+    font-size:30px;
+}
+.numbtn button:hover{
+    transform:translateY(-3px);
+    background:var(--accent);
+    color:black;
+}
+.numbtn button:active{
+    transform:scale(0.95);
+}
+#inputBox{
+    background: var(--bg);
+    padding: 20px;
+    border: none;
+    font-size: 30px;
+    color: var(--text);
+    width:100%;
+    transition: 0.3s;
+    outline:none;
+}
+#inputBox:focus{
+    outline:none;
+    border:none;
+    box-shadow:none;
+}
+.numbtn button:nth-child(1){
+    color: var(--del);
+}
+.numbtn button:nth-child(2){
+    color: var(--accent2);
+}
+.numbtn button:nth-child(3){
+    color: var(--accent2);
+}.numbtn button:nth-child(4){
+    color: var(--accent2);
+}
+.numbtn button:nth-child(8){
+    color: var(--accent2);
+}
+.numbtn button:nth-child(12){
+    color: var(--accent2);
+}
+.numbtn button:nth-child(16){
+    color: var(--accent2);
+}
+.numbtn button:nth-child(20){
+    color: var(--text);
+}
+.optional{
+   width:100%;
+   padding:10px 0;
+   display:flex;
+   justify-content:space-between;
+   align-items:center;
+}
+.optional button{
+    padding:10px 15px;
+    background:var(--bg);
+    color:var(--text);
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.2s;
+        font-size: 20px;
+
+}
+.optional button:hover{
+    transform:translateY(-2px);
+}
+.delbtn:active{
+    color: blue;
+    transform:scale(0.95);
+}
+@media (max-width:500px){
+
+    .Calculator{
+        padding:15px;
+    }
+
+    .numbtn button{
+        font-size:16px;
+    }
+
+    #inputBox{
+        font-size:20px;
+    }
+}
+</style>
+<body>
+<div class="Calculator">
+    <div class="inputdiv">
+        <input type="text" id="inputBox" placeholder="0">
+    </div>
+    <div class="optional">
+        <button onclick="Historys()">History</button>
+        <button onclick="Delbtn()" style = "color: #71717e;" class="delbtn">⌫</button>
+    </div>
+    <div class="numbtn">
+        <button onclick="clearAll()" class="clear">C</button>
+        <button onclick="bracketer('()')">()</button>
+        <button onclick="numberinput('%')">%</button>
+        <button onclick="numberinput('/')">÷</button>
+
+        <button onclick="numberinput('1')">1</button>
+        <button onclick="numberinput('2')">2</button>
+        <button onclick="numberinput('3')">3</button>
+        <button onclick="numberinput('*')">x</button>
+
+        <button onclick="numberinput('4')">4</button>
+        <button onclick="numberinput('5')">5</button>
+        <button onclick="numberinput('6')">6</button>
+        <button onclick="numberinput('-')">-</button>
+
+        <button onclick="numberinput('7')">7</button>
+        <button onclick="numberinput('8')">8</button>
+        <button onclick="numberinput('9')">9</button>
+        <button onclick="numberinput('+')">+</button>
+
+        <button onclick="numberinput('+/-')">+/-</button>
+        <button onclick="numberinput('0')">0</button>
+        <button onclick="numberinput('.')">.</button>
+        <button onclick="calculate()" style=" background:var(--accent2)">=</button>
+        </div>
+    </div>
+<script>
+let lastChar = "";
+function numberinput(val){
+
+    const inputbox = document.getElementById("inputBox");
+    const input = inputbox.value;
+
+    // OPERATOR LOGIC
+    if(/[+\-*/%]/.test(val)){
+
+        // prevent starting with + * /
+        if(input === "" && val !== "-"){
+            return;
+        }
+
+        // replace old operator
+        if(/[+\-*/%]$/.test(input)){
+            inputbox.value = input.slice(0,-1) + val;
+        }
+        else{
+            inputbox.value = input + val;
+        }
+
+        lastChar = val;
+        return;
+    }
+
+    // DECIMAL LOGIC
+    if(val === "."){
+
+        const lastOp = Math.max(
+            input.lastIndexOf("+"),
+            input.lastIndexOf("-"),
+            input.lastIndexOf("*"),
+            input.lastIndexOf("/"),
+            input.lastIndexOf("%")
+        );
+
+        const currentToken = input.slice(lastOp + 1);
+
+        // prevent multiple decimals
+        if(currentToken.includes(".")){
+            return;
+        }
+
+        // start decimal with 0.
+        if(currentToken === ""){
+            inputbox.value = input + "0.";
+        }
+        else{
+            inputbox.value = input + ".";
+        }
+
+        lastChar = ".";
+        return;
+    }
+
+    // NORMAL NUMBER
+    inputbox.value = input + val;
+
+    lastChar = val;
+}
+
+function bracketer() {
+  const inputbox = document.getElementById("inputBox");
+  const input = inputbox.value;
+  // count open and close
+  const open = (input.match(/\(/g) || []).length;
+  const close = (input.match(/\)/g) || []).length;
+
+  // if nothing or last char is operator or "(" -> insert "("
+  if (input === "" || /[+\-*/%(]$/.test(input)) {
+    inputbox.value = input + "(";
+    return;
+  }
+
+  // if more opens than closes and last char is digit or ")" -> insert ")"
+  if (open > close && /[0-9.]|\)$/.test(input.slice(-1))) {
+    inputbox.value = input + ")";
+    return;
+  }
+
+  // otherwise insert "("
+  inputbox.value = input + "(";
+}
+function calculate(){
+
+    const inputbox = document.getElementById("inputBox");
+    const input = inputbox.value.trim();
+
+    // VALIDATION
+    if(!/^[0-9+\-*/().\s%]+$/.test(input) || input === ""){
+        inputbox.value = "Error";
+        return;
+    }
+
+    try{
+        const total = eval(input);
+        inputbox.value = total;
+    }
+
+    catch(e){
+        inputbox.value = "Error";
+    }
+}
+function clearAll(){
+    document.getElementById("inputBox").value = "";
+}
+function updateDelColor(){
+    const inputbox = document.getElementById("inputBox");
+    const delButton = document.querySelector(".delbtn");
+
+    if(inputbox.value.length > 0){
+        delButton.style.color = "rgb(197, 22, 22)";
+    } else {
+        delButton.style.color = "#71717e";
+    }
+}
+function Delbtn(){
+    const inputbox = document.getElementById("inputBox");
+    inputbox.value = inputbox.value.slice(0,-1);
+    updateDelColor();
+}
+</script>
+
+</body>
+</html>
