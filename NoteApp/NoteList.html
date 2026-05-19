@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>NoteList</title>
+   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+   <link rel="stylesheet" href="Note.css">
+</head>
+<body>
+<div class="app">
+    <header>
+        <div class="logo">Note<span>.</span>List</div>
+        <div class="header-meta">Personal notes<br/>Keep it brief</div>
+        <div class="DarkMode">
+    <div class="moon"></div>
+</div>
+    </header>
+        <button onclick="Addnotes()" class="btn-add"><span class="plus">+</span> New Note</button>
+    <div class="notes" id="notes" style="display:none;">
+            <p class="pop" id="popup-title">NEW NOTES</p>
+            <textarea id="description" class="notes-input" placeholder="Write something worth keeping...">
+            </textarea>
+        <div class="btn-grp">
+            <button onclick="closebtn()" class="close-btn">cancel</button>
+            <button onclick="submitnote()" class="submit-btn">Submit</button>
+        </div>
+    </div>
+</div>
+<div class="list-content">
+    <div class="notes-list">
+        <ul id="notes-list"></ul>
+    </div> 
+<div class="toast" id="toast">
+    <span>Note deleted.</span>
+    <button class="toast-undo" onclick="undoTask()" id="undoBox">Undo</button>
+</div>
+</div>
+<script src="Note.js"></script>
+</body>
+
+</html>

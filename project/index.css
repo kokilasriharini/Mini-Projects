@@ -1,0 +1,283 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:Arial, sans-serif;
+    line-height:1.6;
+    background:#f5f5f5;
+    color:#222;
+}
+.btn{
+    padding:12px 24px;
+    border:none;
+    background:#111;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+    transition: 0.2s;
+    box-shadow:10px 10px 10px rgba(27, 27, 27, 0.1);
+   
+}
+.btn:hover{
+    transform: scale(1.1);
+}
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.header{
+    background:#111;
+    color:white;
+    padding:20px 0;
+}
+
+.header .container{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size:28px;
+}
+
+.navbar{
+    display:flex;
+    gap:20px;
+    z-index: 1000;
+    transition:0.3s ease;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:white;
+    font-size:16px;
+    transition: 0.2s;
+    padding: 10px;
+}
+.navbar a:hover{
+    background-color: #555;
+    border-radius: 10px;
+    transform: translateX(5px);
+}
+
+.hero{
+    padding:80px 0;
+    background:white;
+}
+
+.hero-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-text h2{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    margin-bottom:20px;
+    color:#555;
+}
+
+.hero-image{
+    flex:1;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* Services */
+
+.services{
+    padding:80px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:36px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:10px 10px 10px rgba(27, 27, 27, 0.1);
+    opacity:0;
+    transition:1s ease;
+}
+
+/* First and Third Card */
+
+.c1{
+    transform:translateY(100px);
+}
+
+.c1.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Second Card */
+
+.c2{
+    transform:translateX(200px);
+}
+
+.c2.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.darkmode{
+    margin-left:auto;
+
+    padding:10px 15px;
+
+    background:#000;
+    color:white;
+
+    border:none;
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+.darkmode:hover{
+    background:#555;
+    transform:translateY(-5px);
+}
+.card h3{
+    margin-bottom:15px;
+}
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:15px 15px 20px rgba(0,0,0,0.15);
+}
+.c1.show:hover{
+    transform:translateY(-10px);
+}
+.mode{
+    background: rgb(43, 0, 43);;
+    color:white;
+}
+
+.mode .hero{
+   background: rgb(43, 0, 43);;
+}
+
+.mode .card{
+    background: rgb(116, 32, 116);;
+    color:white;
+}
+
+.mode .hero-text p{
+    color:#ccc;
+}
+.mode .btn{
+    background: rgb(136, 3, 136);
+}
+.mode .navbar{
+    background: rgb(43, 0, 43);
+}
+.mode .header{
+    background: rgb(43, 0, 43);
+}
+.btn:active{
+    transform:scale(0.95);
+}
+.hero-image img{
+    width:100%;
+    border-radius:10px;
+    transition:0.4s ease;
+}
+
+.hero-image img:hover{
+    transform:scale(1.03);
+}
+
+.footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px 0;
+}
+
+/* Responsive Design */
+.menu-btn{
+    display:none;
+    font-size:28px;
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    padding: 10px;
+    border-radius:50%;
+}
+.menu-btn:hover{
+    background-color: #555;
+}
+@media(max-width:768px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    
+
+    .navbar{
+        display:none;
+        width:100%;
+        position:absolute;
+        top:80px;
+        left:0;
+
+        background:#000;
+        flex-direction:column;
+
+        padding:30px;
+        gap:20px;
+    }
+
+    .navbar.active{
+        display:flex;
+    }
+
+    .hero-content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text h2{
+        font-size:36px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+}
+
