@@ -785,29 +785,22 @@ body.day .state-label {
     color: white;
 }
 @media (max-width: 600px) {
-  
-  .game-container, .choices-container {
-    flex-direction: column; 
-    gap: 15px;
+  header {
+    padding: 16px;
   }
-
-  h1 {
-    font-size: 1.8rem;
+  .header-right {
+    gap: 10px;
   }
-  
-  .score-board {
-    font-size: 1.2rem;
-    padding: 10px;
+  .game {
+    padding: 16px;
+    gap: 16px;
   }
-
-  .choice-btn {
-    width: 80px;
-    height: 80px;
-    font-size: 1.5rem; /* if using emojis or text */
+  #turnText, #rounds, #draws {
+    width: 100%; /* Stacks items vertically on ultra-small screens */
   }
-
-  body {
-    padding: 10px;
+  .scoreboard {
+    flex-direction: column; /* Stack player 1 & 2 scores on mobile devices */
+    gap: 12px;
   }
 }
 
