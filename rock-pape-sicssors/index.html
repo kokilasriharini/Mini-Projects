@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock - Paper - Sicssors</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+<div class="app">
+<header>
+<div class="logo">
+    <span class="logo-rock">ROCK</span>
+    <span class="logo-divider"> - </span>
+    <span class="logo-paper">PAPER</span>
+    <h1 class="logo-scissors">SCISSORS<span>.</span></h1>
+</div>
+<div class="header-right">
+    <button id="reset" onclick="resetMatch()" class="reset">Reset</button>   
+<div class="DarkMode">
+  <div class="toggleTrack" id="toggleTrack">
+    <div class="toggle-bg"></div>
+    <div class="toggle-bg-day"></div>
+    <div class="stars" id="stars">
+      <div class="star" id="star"></div>
+    </div>
+<div class="clouds">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    </div>
+<div class="thumb" id="thumb">
+    <div class="moon-face">
+        <div class="crater cr1"></div>
+        <div class="crater cr2"></div>
+        <div class="crater cr3"></div>
+ </div>
+ <div class="sun-face"></div>
+  <div class="rays" id="rays"></div>
+ </div>
+</div>
+  <div id="state-label" class="state-label">Dark</div>
+</div>
+</header>
+    <div class="user" id="active">
+        <button id="player" onclick="playervsplayer()">
+          <div class="buttons">
+            <img src="users.png" width="50px" height="50px">
+            <span class="vs">Vs</span>
+            <img src="users.png" width="50px" height="50px">
+          </div>
+            <div class="btn btns" style="display:none;">Play</div>
+        </button>
+
+        <button id="computer" onclick="computervsplayer()" >
+          <div class="buttons">
+            <img src="users.png" width="50px" height="50px">
+            <span class="vs">Vs</span>
+            <img src="mp3-player.png" width="50px" height="50px">
+          </div>  
+            <div class="btn1 btns" style="display: none;">Challenge</div>
+        </button>
+    </div>
+<div class="game" id="game" style="display:none;">
+    <div class="game-header">
+        <h2 id="turnText">Player 1 Turn</h2>
+        <h2 id="rounds">Rounds  0</h2>
+        <h2 id="draws">Draws 0</h2>
+    </div>
+        <div class="hands">
+                <button class="Rock" onclick="game('Rock')">
+                    <img src="rock.png" width="100px" height="100px">
+                </button>
+                <button class="scissors" onclick="game('Scissors')">
+                    <img src="sccissor.png" width="100px" height="120px">
+                </button>
+                <button class="paper" onclick="game('Paper')">
+                    <img src="paper.png" width="100px" height="100px">
+                </button>               
+</div>
+<div class="result">
+    <div class="scoreboard">
+    <div class="score-card">
+        <h3>Player 1</h3>
+        <p id="score1">0</p>
+    </div>
+    <div class="score-card">
+        <h3>Player 2</h3>
+        <p id="score2">0</p>
+    </div>
+</div>
+
+<div class="results">
+    <h3>Round Result</h3>
+    <div id="result1" class="resultcard" style="display:none;">
+        <p>Player 1 : </p>
+        <p>Player 2 : </p>
+    </div>
+    <div id="result2" class="resultcard" style="display:none;">
+        <p>You :  </p>
+        <p>Computer : </p>
+    </div>
+</div>
+
+<div class="final-box">
+    <h3>Final Result</h3>
+    <p id="FinalResult"></p>
+</div>
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>

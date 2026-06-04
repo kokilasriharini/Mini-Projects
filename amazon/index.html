@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amazon Clone</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <span>amazon</span>
+    </div>
+   
+    <div class="search-box">
+      <select>
+        <option>All</option>
+      </select>
+      <input type="text" placeholder="Search Amazon"/>
+      <button>search</button>
+    </div>
+
+    <div class="nav-links">
+      <div>
+        <input type="image" id="accountid">
+        <h4>Account</h4>
+      </div>
+
+      <div>
+        <p>Returns</p>
+        <h4>& Orders</h4>
+      </div>
+
+      <div class="cart">
+        🛒 Cart
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU -->
+   <button id="menuBtn">
+        ☰
+    </button>
+  <nav class="menu" id="menu">
+     
+    <a href="#">All</a>
+    <a href="#">Today's Deals</a>
+    <a href="#">Mobiles</a>
+    <a href="#">Electronics</a>
+    <a href="#">Fashion</a>
+    <a href="#">Home</a>
+    <a href="#">Books</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Big Summer Sale</h1>
+      <p>Up to 70% off on electronics & fashion</p>
+      <button>Shop Now</button>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="">
+      <h3>Smartphone</h3>
+      <p>₹29,999</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="">
+      <h3>Smart Watch</h3>
+      <p>₹4,999</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="">
+      <h3>Headphones</h3>
+      <p>₹2,499</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="">
+      <h3>Shoes</h3>
+      <p>₹3,299</p>
+      <button>Add to Cart</button>
+    </div>
+
+  </section>
+<script>
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("menu");
+
+/*menuBtn.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("show");
+
+    if(mobileMenu.classList.contains("show")){
+        menuBtn.innerHTML = "✖";
+    }
+    else{
+        menuBtn.innerHTML = "☰";
+    }
+
+});*/
+function toggleMenu(){
+  const isMenuOpen =  mobileMenu.classList.toggle("show");
+
+}
+
+</script>
+</body>
+</html>
