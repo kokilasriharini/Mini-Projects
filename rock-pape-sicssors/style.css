@@ -784,23 +784,166 @@ body.day .state-label {
     background: #075985;
     color: white;
 }
-@media (max-width: 600px) {
-  header {
-    padding: 16px;
+/* ==========================
+   MOBILE RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+
+  /* Header */
+  header{
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
-  .header-right {
-    gap: 10px;
+
+  .header-right{
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .game {
-    padding: 16px;
-    gap: 16px;
+
+  /* Logo */
+  .logo h1{
+    font-size: 24px;
   }
-  #turnText, #rounds, #draws {
-    width: 100%; /* Stacks items vertically on ultra-small screens */
+
+  .logo span{
+    font-size: 18px;
   }
-  .scoreboard {
-    flex-direction: column; /* Stack player 1 & 2 scores on mobile devices */
+
+  /* Mode Selection */
+  .user{
+    width: 100%;
+    padding: 15px;
+  }
+
+  .user button{
+    max-width: 100%;
+    height: 130px;
+    font-size: 18px;
+  }
+
+  .vs{
+    font-size: 22px;
+  }
+
+  /* Game Header */
+  .game-header{
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
+  }
+
+  #turnText,
+  #rounds,
+  #draws{
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Hand Buttons */
+  .hands{
+    gap: 12px;
+  }
+
+  .hands button{
+    width: 100px;
+    height: 100px;
+  }
+
+  .hands button img{
+    width: 55px;
+    height: 55px;
+  }
+
+  /* Scoreboard */
+  .scoreboard{
+    flex-direction: column;
+  }
+
+  .score-card{
+    width: 100%;
+  }
+
+  .score-card p{
+    font-size: 32px;
+  }
+
+  /* Result Box */
+  .results{
+    padding: 20px;
+  }
+
+  /* Final Result */
+  #FinalResult{
+    font-size: 20px;
+  }
+
+  /* Popup */
+  .popup-box{
+    width: 90%;
+    min-width: unset;
+    padding: 25px;
+  }
+
+  .popup-buttons{
+    flex-direction: column;
+  }
+
+  .popup-buttons button{
+    width: 100%;
+  }
+}
+
+
+/* ==========================
+   EXTRA SMALL DEVICES
+========================== */
+
+@media (max-width: 480px){
+
+  .logo h1{
+    font-size: 20px;
+  }
+
+  .reset{
+    width: 100%;
+  }
+
+  .toggleTrack{
+    width: 55px;
+    height: 34px;
+  }
+
+  .thumb{
+    width: 18px;
+    height: 18px;
+  }
+
+  .is-day .thumb{
+    transform: translateX(20px) translateY(10px);
+  }
+
+  .hands button{
+    width: 85px;
+    height: 85px;
+  }
+
+  .hands button img{
+    width: 45px;
+    height: 45px;
+  }
+
+  .score-card p{
+    font-size: 28px;
+  }
+
+  .results{
+    font-size: 14px;
+  }
+
+  #FinalResult{
+    font-size: 18px;
   }
 }
 
