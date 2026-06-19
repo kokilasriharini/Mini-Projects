@@ -1,0 +1,228 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f2f7f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.container {
+    background: #a5a2e5;
+    max-width: 800px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 24px;
+}
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 16px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease;
+    margin-bottom: 24px;
+}
+.metric-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 24px;
+}
+.metric-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(219, 212, 212);
+}
+.number {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 4px;
+}
+.label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+}
+#clearbtn{
+    position: absolute;
+    left: 90%;
+    top: 10px;
+    width: 50px;
+    background-color: transparent;
+}
+.data{
+    position: relative;
+    background-color:white;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+}
+.countbtn{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 200px;
+}
+.data:hover{
+    border: 2px solid #4f46e5;
+}
+.eraser{
+    width: 24px;
+    height: 14px;
+    background: #ff7b7b;
+    border: 2px solid #444;
+    transform: rotate(-25deg);
+    position: relative;
+    margin: auto;
+}
+.eraser:hover{
+    transform: rotate(-75deg) scale(1.1);
+}
+.eraser::before{
+    content:"";
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 8px;
+    height: 14px;
+    background: white;
+    border-left: 2px solid #444;
+}
+.earser::after{
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 8px;
+    width:2px;
+    height: 100%;
+    background: white;
+    border-left: 2px solid #444;
+}
+button{
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #dadada;
+}
+button:hover, textarea:hover{
+     border: 2px solid #4f46e5; 
+}
+button:focus{
+    border: 2px solid #4f46e5;
+    transform: scale(1.05);
+}
+.reverse{
+    display: flex;
+    position: relative;
+    margin-top: 10px;
+    background-color:white;
+    padding: 10px;
+    border-radius: 10px;
+}
+.reverse:hover{
+    border: 2px solid #4f46e5;
+}
+#reverse:hover, #reverse:focus{
+    border: none;
+}
+#copy-btn:hover{
+    border: 2px solid #4f46e5;
+}
+#copy-btn{
+    background-color: #dadada;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    position: absolute;
+    left: 90%;
+}
+.card{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid grey;
+    border-radius:2px;
+    top: 8px;
+    left: 12px;
+}
+.outer-card{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid grey;
+    border-radius:2px;
+    top: 12px;
+    left: 8px;   
+}
+.inputword:hover{
+    border: none;
+}
+@media (max-width: 768px){
+    .container{
+        padding: 20px;
+    }
+    .metric-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    button{
+        width: 100%;
+        max-width: 100px;
+    }
+}
+@media (max-width: 480px){
+    .metric-grid{
+        grid-template-columns:1fr;
+    }
+
+    textarea{
+        font-size: 0.9rem;
+    }
+
+    .number{
+        font-size: 1.5rem;
+    }
+
+    .container{
+        padding: 15px;
+    }
+}

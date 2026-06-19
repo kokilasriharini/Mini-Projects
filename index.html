@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Word App</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="data">
+                <textarea type="text" class="inputword" id="textInput"></textarea>
+                <button type="button" id="countbtn" class="countbtn">Count</button>
+                <button id="clearbtn">
+                    <div class="eraser"></div>
+                </button>
+            </div>
+            <div class="metric-grid">
+            <div class="metric-card">
+                <span class="number" id="total-word">0</span>
+                <span class="label">Words</span>
+            </div>
+            <div class="metric-card">
+                <span class="number" id="total-char">0</span>
+                <span class="label">character</span>
+            </div>
+            <div class="metric-card">
+                <span class="number" id="total-sentence">0</span>
+                <span class="label">Sentences</span>
+            </div>
+            <div class="metric-card">
+                <span class="number" id="reading-time">0</span>
+                <span class="label">Reading Time</span>
+            </div>            
+            </div>
+            <div class="metric-card">
+                <span class="number" id="top-word">-</span>
+                <span class="label">Top Word</span>
+            </div>
+            <div class="reverse">
+                <button type="button" id="copy-btn">
+                    <div class="outer-card"></div><div class="card"></div>
+                </button>
+                <textarea name="reverse" id="reverse"></textarea>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
